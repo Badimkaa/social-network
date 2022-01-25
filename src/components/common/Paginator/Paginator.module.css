@@ -1,0 +1,25 @@
+.paginator {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(59, 53, 77);
+    margin: 0 auto;
+}
+.activePage {
+    color: rgb(255, 208, 0);
+    font-weight: bold;
+}
+
+
+.pageNumber {
+    padding: 2px;
+    /* border-bottom: 1px solid black; */
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.pageNumber:hover{
+    transform: scale(1.1);
+}

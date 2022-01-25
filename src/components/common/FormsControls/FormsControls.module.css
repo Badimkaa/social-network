@@ -1,0 +1,30 @@
+.formControl.error input,
+.error textarea {
+    border-bottom: 2px #be4b49 solid;
+}
+.formControl{
+    height: 62px;
+}
+
+.formControl.error span {
+    position: relative;
+    left: 120%;
+    top: -55px;
+    display: block;
+    padding-left: 20px;
+    color: #be4b49;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.formSummaryError {
+    color: #be4b49;
+    
+    font-weight: bold;
+    font-size: 20px;
+}
+.loginError {
+    position: relative;
+    left: 120%;
+    top: -30px;
+}

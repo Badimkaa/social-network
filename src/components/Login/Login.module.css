@@ -1,0 +1,76 @@
+*{
+    color: rgb(59, 53, 77)
+}
+.form {
+    width: 232px;
+}
+.login {
+font-size: 24px;
+font-weight: bold;
+letter-spacing: 1px;
+margin-bottom: 30px;
+}
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-left: 30px;
+    height: 325px;
+    padding: 30px;
+
+  box-shadow: 0px 0px 20px -5px rgba(50, 50, 50, 0.2);
+    /* padding-top: 50px; */
+    /* border: 1px solid red; */
+}
+.field {
+    width: 220px;
+    height: 25px;
+    padding: 5px;
+    margin-bottom: 25px;
+    border: none;
+    border-bottom: 2px solid black;
+    border-radius: 5px;
+    outline: none;
+    letter-spacing: 1px;
+    /* font-weight: 500; */
+    font-size: 16px;
+    box-shadow: 0px 10px 10px -5px rgba(50, 50, 50, 0.2);
+}
+.rememberMeBlock{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    width: 230px;
+}
+.rememberMeText {
+    margin: 0;
+    font-size: 20px;
+    text-shadow: 0px 10px  -5px rgba(50, 50, 50, 0.2);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.button{
+    width: 232px;
+    height: 35px;
+    border: none;
+    background-color:#DCD0FF ;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0px 10px 10px -5px rgba(50, 50, 50, 0.2);
+    border-radius: 5px;
+    transition: 0.2s;
+}
+.button:active {
+    /* background-color:red */
+    transform: scale(1.05);
+}
+.checkBox{
+    /* width: 220px; */
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+}

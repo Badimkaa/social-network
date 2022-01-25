@@ -1,0 +1,45 @@
+.allPosts {
+    margin-top: 10px;
+}
+
+.postsBlock {
+    margin-left: 20px;
+    margin-top: 30px;
+    padding: 30px;
+    box-shadow: 0px 0px 20px -5px rgba(50, 50, 50, 0.2);
+    font-family: 'Varela Round';
+    color: rgb(59, 53, 77);
+}
+
+.myPosts {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.field {
+    width: 400px;
+    height: 40px;
+    padding: 5px;
+    margin-bottom: 25px;
+    border: none;
+    border-bottom: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    outline: none;
+    letter-spacing: 1px;
+    /* font-weight: 500; */
+    font-size: 16px;
+    box-shadow: 0px 10px 10px -5px rgba(50, 50, 50, 0.2);
+    resize: none;
+  }
+  .addPost{
+    width: 232px;
+    height: 35px;
+    border: none;
+    background-color:#DCD0FF ;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0px 10px 10px -5px rgba(50, 50, 50, 0.2);
+    border-radius: 5px;
+    transition: 0.2s;
+    margin-bottom: 30px;
+}
