@@ -1,9 +1,9 @@
-import React, { FC, MouseEventHandler, useState } from 'react'
-import styles from './Header.module.css'
+import React, { FC, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import styles from './Header.module.css';
 type PropsType = {
     isAuth: boolean
-    photos: any
+    photos: string  
     login: string | null
     logout: () => void
 }
@@ -22,7 +22,7 @@ const Header: FC<PropsType> = (props) => {
                         <div >
                             <div tabIndex={0} onClick={showPopUp} className={styles.smallPhoto}>
                                 <div>
-                                    <img src={props.photos} alt="authPhoto" />
+                                    <img src={props.photos } alt="authPhoto" />
                                 </div>
                                 {props.login}
                             </div>

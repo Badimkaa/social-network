@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { reset } from 'redux-form'
-import { addPostActionCreator, deletePost } from '../../../redux/profile-reducer'
+import { actions } from '../../../redux/profile-reducer'
 import { AppStateType } from '../../../redux/redux-store'
 import { PostsType } from '../../../types/types'
 import MyPosts from './MyPosts'
@@ -20,14 +20,14 @@ type MapDispatchPropsType = {
 let mapDispatchToProps = (dispatch: any): MapDispatchPropsType => {
   return {
     addPost: (newPostText, postId) => {
-      dispatch(addPostActionCreator(newPostText, postId))
+      dispatch(actions.addPostActionCreator(newPostText, postId))
       dispatch(reset('profileAddPostForm'))
     },
     deletePost: (postId) => {
-      dispatch(deletePost(postId))
+      dispatch(actions.deletePost(postId))
     }
   }
 }
-let MyPostsContainer = connect<MapStatePropsType,{},MapDispatchPropsType,AppStateType>(mapStateToProps, mapDispatchToProps)(MyPosts)
+let MyPostsContainer = connect<MapStatePropsType, MapDispatchPropsType,{}, AppStateType>(mapStateToProps, mapDispatchToProps)(MyPosts)
 
 export default MyPostsContainer

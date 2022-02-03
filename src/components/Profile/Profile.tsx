@@ -5,23 +5,18 @@ import MyPostsContainer from './MyPosts/MyPostsContainer'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 type PropsType = {
   isOwner: boolean
-  profile: ProfileType
+  profile: ProfileType| null 
   status: string
-  updateStatus: () => void
-  savePhoto: () => void
-  saveProfile: (formData: any) => Promise<boolean>
-
+  updateStatus:  (text: string) => void
+  savePhoto: (file: File) => void
+  saveProfile: (formData: ProfileType) => Promise<boolean>
 }
 const Profile: FC<PropsType> = (props) => {
   return (
     <div>
       <ProfileInfo isOwner={props.isOwner} profile={props.profile} status={props.status}
         updateStatus={props.updateStatus} savePhoto={props.savePhoto} saveProfile={props.saveProfile} />
-      <MyPostsContainer addPost={function (text: string, postId: number): void {
-        throw new Error('Function not implemented.')
-      }} deletePost={function (postId: number): void {
-        throw new Error('Function not implemented.')
-      }} />
+      <MyPostsContainer />
     </div>
   )
 }

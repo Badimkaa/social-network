@@ -1,8 +1,8 @@
-import { FC, FormEventHandler } from "react"
-import { connect, Matching } from "react-redux"
+import { FC } from "react"
+import { connect } from "react-redux"
 import { Redirect } from "react-router"
 import { Field, InjectedFormProps, reduxForm } from "redux-form"
-import { login } from "../../redux/auth-reduceer"
+import { login } from "../../redux/auth-reducer"
 import { AppStateType } from "../../redux/redux-store"
 import { required } from "../../utils/validators"
 import { Input } from "../common/FormsControls/FormsControls"
@@ -12,7 +12,12 @@ import loginStyles from './Login.module.css'
 type LoginFormOwnPropsType = {
     captchaUrl: string | null
 }
-
+type FormDataType = {
+    email: string
+    password: string
+    rememberMe: boolean
+    captcha: string
+}
 const LoginForm: FC<InjectedFormProps<FormDataType, LoginFormOwnPropsType> & LoginFormOwnPropsType>
     = ({ handleSubmit, error, captchaUrl }) => {
         return (
@@ -39,12 +44,7 @@ const LoginForm: FC<InjectedFormProps<FormDataType, LoginFormOwnPropsType> & Log
 
 const LoginReduxForm = reduxForm<FormDataType, LoginFormOwnPropsType>({ form: 'login' })(LoginForm)
 
-type FormDataType = {
-    email: string
-    password: string
-    rememberMe: boolean
-    captcha: string
-}
+
 const Login: FC<MapStatePropsType & MapDispatchPropsType> = (props) => {
     let onSubmit = (formData: FormDataType) => {
         props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
@@ -70,7 +70,6 @@ type MapStatePropsType = {
     captchaUrl: string | null
 }
 type MapDispatchPropsType = {
-
-    login: (email: string, password: string, rememberMe: boolean, captcha: string) => void
+    login: (email: string, password: string, rememberMe: boolean, captcha: string) => any
 }
-export default connect<MapStatePropsType, {}, MapDispatchPropsType, AppStateType>(mapStateToProps, { login })(Login)
+export default connect<MapStatePropsType, MapDispatchPropsType,{}, AppStateType>(mapStateToProps, { login })(Login)

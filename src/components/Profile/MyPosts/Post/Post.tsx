@@ -2,12 +2,12 @@ import styles from './Post.module.css'
 import ava from './avatar.png'
 import { FC } from 'react'
 type PropsType = {
-deletePost: (postId: number) => void
-id: number
-message: string
-likesCount: number
+  deletePost: (postId: number) => void
+  id: number
+  message: string
+  likesCount: number
 }
-const Post:FC<PropsType> = (props) => {
+const Post: FC<PropsType> = (props) => {
   let deletePost = () => {
     props.deletePost(props.id)
   }

@@ -1,4 +1,5 @@
 import { DialogsType, MessagesType } from "../types/types"
+import { InferActionTypes } from "./redux-store"
 
 const ADD_MESSAGE = 'dialogs/ADD-MESSAGE'
 
@@ -9,7 +10,7 @@ let initialState = {
         { id: 3, name: 'Alina', ava: 'https://cdn-icons-png.flaticon.com/512/4530/4530937.png' },
         { id: 4, name: 'Sasha', ava: 'https://cdn-icons-png.flaticon.com/512/4530/4530910.png' },
         { id: 5, name: 'Maksim', ava: 'https://cdn-icons-png.flaticon.com/512/4530/4530930.png' },
-    ] as Array<DialogsType>, 
+    ] as Array<DialogsType>,
     messages: [
         { id: 1, personId: 1, message: 'Привет, как ты?' },
         { id: 2, personId: 2, message: 'Да нормально, а ты?' },
@@ -20,8 +21,8 @@ let initialState = {
     ] as Array<MessagesType>,
 }
 type InitialStateType = typeof initialState
-type ActionTypes= AddMessageActionCreatorActionType
-const dialogsReducer = (state = initialState, action: ActionTypes): InitialStateType => {
+
+const dialogsReducer = (state = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage = {
@@ -36,13 +37,13 @@ const dialogsReducer = (state = initialState, action: ActionTypes): InitialState
         default: return state
     }
 }
-type AddMessageActionCreatorActionType = {
-    type: typeof ADD_MESSAGE
-    newMessageText: string
+type ActionsType = InferActionTypes<typeof actions>
+export const actions = {
+    addMessage: (newMessageText: string) => {
+        return { type: ADD_MESSAGE, newMessageText }
+    }
 }
-export const addMessageActionCreator = (newMessageText: string) : AddMessageActionCreatorActionType => {
-    return { type: ADD_MESSAGE, newMessageText }
-}
+
 
 
 export default dialogsReducer

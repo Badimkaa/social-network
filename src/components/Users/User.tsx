@@ -1,8 +1,8 @@
-import styles from './Users.module.css'
-import userPhoto from '../../assets/images/user.png'
 import React, { FC } from 'react'
 import { NavLink } from 'react-router-dom'
+import userPhoto from '../../assets/images/user.png'
 import { UserType } from '../../types/types'
+import styles from './Users.module.css'
 type PropsType = {
     user: UserType
     followingInProgress: Array<number>

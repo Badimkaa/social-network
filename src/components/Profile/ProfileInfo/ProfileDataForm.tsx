@@ -7,13 +7,11 @@ type PropsType = {
     profile: ProfileType
 
 }
-const ProfileDataForm: FC<PropsType & InjectedFormProps<{}, PropsType>> = ({ handleSubmit, profile, error }) => {
+const ProfileDataForm: FC<InjectedFormProps<ProfileType, PropsType> & PropsType> = ({ handleSubmit, profile, error }) => {
     return (
         <form onSubmit={handleSubmit}>
-            {/* <div className={profileData.errorAndOkWrapper}> */}
             {error && <div className={styles.formSummaryError}>{error}</div>}
             <button className={profileData.saveButton}></button>
-            {/* </div> */}
             <div className={profileData.profileDataItem}>
                 <div className={profileData.profileDataItemName}>Full name:</div>
                 <Field className={profileData.field} component='input' name='fullName' placeholder='Enter your full name'></Field>
@@ -40,5 +38,5 @@ const ProfileDataForm: FC<PropsType & InjectedFormProps<{}, PropsType>> = ({ han
         </form >
     )
 }
-const ProfileDataReduxForm = reduxForm<{}, PropsType>({ form: 'edit-profile' })(ProfileDataForm)
+const ProfileDataReduxForm = reduxForm<ProfileType, PropsType>({ form: 'edit-profile' })(ProfileDataForm)
 export default ProfileDataReduxForm

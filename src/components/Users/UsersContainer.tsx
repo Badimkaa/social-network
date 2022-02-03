@@ -1,6 +1,6 @@
-import React from "react";
+import React, { ComponentType } from "react";
 import { connect } from "react-redux";
-import { follow, unfollow, getUsers } from "../../redux/users-reducer";
+import { follow, unfollow, getUsers, FilterType } from "../../redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
@@ -19,7 +19,7 @@ type MapStatePropsType = {
 }
 
 type MapDispatchPropsType = {
-    getUsers: (currentPage: number, pageSize: number) => void
+    getUsers: (currentPage: number, pageSize: number, term: string) => void
     onPageChanged: (pageNumber: number) => void
     follow: (userId: number) => void
     unfollow: (userId: number) => void
@@ -27,10 +27,13 @@ type MapDispatchPropsType = {
 type PropsType = MapStatePropsType & MapDispatchPropsType
 class UsersContainer extends React.Component<PropsType> {
     componentDidMount() {
-        this.props.getUsers(this.props.currentPage, this.props.pageSize)
+        this.props.getUsers(this.props.currentPage, this.props.pageSize, '')
     }
     onPageChanged = (pageNumber: number) => {
-        this.props.getUsers(pageNumber, this.props.pageSize)
+        this.props.getUsers(pageNumber, this.props.pageSize, '')
+    }
+    onFilterChanged = (filter: FilterType) => {
+        this.props.getUsers(this.props.currentPage, this.props.pageSize, filter.term)
     }
     render() {
         return (
@@ -40,6 +43,7 @@ class UsersContainer extends React.Component<PropsType> {
                     pageSize={this.props.pageSize}
                     currentPage={this.props.currentPage}
                     onPageChanged={this.onPageChanged}
+                    onFilterChanged={this.onFilterChanged}
                     users={this.props.users}
                     follow={this.props.follow}
                     unfollow={this.props.unfollow}
@@ -92,7 +96,7 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 // функцию mapDispatchToProps можно заменить объектом, в который передаем сразу action creatorы,
 //  где наменование ключа соответствует наименованию action creator, т.е. {follow: follow},
 // где значение follow - action creator
-export default compose(
+export default compose<ComponentType>(
     withAuthRedirect, connect<MapStatePropsType, {}, MapDispatchPropsType, AppStateType>(mapStateToProps, {
         follow, unfollow, getUsers
     }))(UsersContainer)
